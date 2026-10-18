@@ -42,7 +42,18 @@ h1 {
   top: 1.25rem;
   right: 1.25rem;
   z-index: 2;
-  padding-bottom: 0.75rem;
+}
+
+.info::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  top: calc(1.25rem + 32px + 0.55rem - 1rem);
+  right: calc(1.25rem - 1rem);
+  bottom: calc(3.25rem - 1rem);
+  width: calc(26rem + 2rem);
+  max-width: calc(100% - 0.5rem);
+  background: transparent;
 }
 
 .info-button {
@@ -64,12 +75,14 @@ h1 {
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .info-paper {
-  display: none;
   box-sizing: border-box;
   position: fixed;
+  z-index: 1;
   top: calc(1.25rem + 32px + 0.55rem);
   right: 1.25rem;
   bottom: 3.25rem;
@@ -84,11 +97,14 @@ h1 {
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.9rem;
   line-height: 1.45;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
 }
 
-.info:hover .info-paper,
-.info:focus-within .info-paper {
-  display: block;
+.info:hover .info-paper {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .info-title {
